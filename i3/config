@@ -243,8 +243,12 @@ client.focused_inactive  $ibgcolor                $ibgcolor                   $i
 client.urgent            $ubgcolor                $ubgcolor                   $textcolor              $ubgcolor
 
 
-#start rofi
-bindsym $mod+d exec rofi -show run
+#start rofi launcher
+bindsym $mod+d exec --no-startup-id .config/rofi/launchers/colorful/launcher.sh
+# launch rofi power menu
+bindsym $mod+p exec --no-startup-id ~/.config/rofi/bin/menu_powermenu
+# launch rofi menu network
+# bindsym $mod+n exec --no-startup-id ~/.config/rofi/bin/menu_network
  #Polybar
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
