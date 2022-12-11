@@ -86,7 +86,7 @@ return packer.startup(function(use)
  use { "folke/which-key.nvim" }
   -- Treesitter
   use {
-    "nvim-treesitter/nvim-treesitter",
+    "nvim-treesitter/nvim-treesitter"
       }
 
   -- Git

@@ -11,13 +11,15 @@ local servers = {
   "cssls",
   "html",
   "tsserver",
---  "pyright",
+  --  "pyright",
   "bashls",
   "jsonls",
   "yamlls",
   "rust_analyzer",
   "taplo",
-  "gopls"
+  "gopls",
+  "ccls",
+  "kotlin_language_server",
 }
 
 lsp_installer.setup()
@@ -36,6 +38,8 @@ for _, server in pairs(servers) do
   }
 
   if server == "sumneko_lua" then
+    vim.cmd [[ autocmd BufWritePre *.lua lua vim.lsp.buf.format{ async = true }
+ ]]
     local sumneko_opts = require "user.lsp.settings.sumneko_lua"
     opts = vim.tbl_deep_extend("force", sumneko_opts, opts)
   end
@@ -48,12 +52,29 @@ for _, server in pairs(servers) do
   if server == "gopls" then
     vim.cmd [[ autocmd BufWritePre *.go lua vim.lsp.buf.format{ async = true }
  ]]
+    lspconfig.gopls.setup {
+      settings = {
+        gopls = {
+          env = {
+            GOFLAGS = "-tags=windows,linux,unittest"
+          }
+        }
+      }
+    }
   end
 
-if server == "rust_analyzer" then
-	require("rust-tools").setup {
+  if server == "ccls" then
+    vim.cmd [[ autocmd BufWritePre *.c lua vim.lsp.buf.format{ async = true }
+ ]]
+  end
+  if server == "kotlin_language_server" then
+    vim.cmd [[ autocmd BufWritePre *.kt lua vim.lsp.buf.format{ async = true }
+ ]]
+  end
+  if server == "rust_analyzer" then
+    require("rust-tools").setup {
       tools = {
-          on_initialized = function()
+        on_initialized = function()
           vim.cmd [[
             autocmd BufEnter,CursorHold,InsertLeave,BufWritePost *.rs silent! lua vim.lsp.codelens.refresh()
             autocmd BufWritePre *.rs lua vim.lsp.buf.format{ async = true }
@@ -71,21 +92,21 @@ if server == "rust_analyzer" then
             checkOnSave = {
               command = "clippy",
             },
-          inlay_hints = {
+            inlay_hints = {
               show_parameter_hints = true,
               other_hints_prefix = "<< ",
               only_current_line = true,
-            only_current_line_autocmd = "CursorMoved,CursorMovedI"
-           },
+              only_current_line_autocmd = "CursorMoved,CursorMovedI"
+            },
           },
         },
       },
-		}
-    opts =  {
-        adapter = require('rust-tools.dap').get_codelldb_adapter(codelldb_path, liblldb_path)
-      }
-		goto continue
-	end
+    }
+    opts = {
+      adapter = require('rust-tools.dap').get_codelldb_adapter(codelldb_path, liblldb_path)
+    }
+    goto continue
+  end
 
 
 
