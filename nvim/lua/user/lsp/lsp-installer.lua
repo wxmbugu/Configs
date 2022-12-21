@@ -11,7 +11,7 @@ local servers = {
   "cssls",
   "html",
   "tsserver",
-  --  "pyright",
+  "pyright",
   "bashls",
   "jsonls",
   "yamlls",
@@ -38,8 +38,6 @@ for _, server in pairs(servers) do
   }
 
   if server == "sumneko_lua" then
-    vim.cmd [[ autocmd BufWritePre *.lua lua vim.lsp.buf.format{ async = true }
- ]]
     local sumneko_opts = require "user.lsp.settings.sumneko_lua"
     opts = vim.tbl_deep_extend("force", sumneko_opts, opts)
   end
@@ -50,8 +48,6 @@ for _, server in pairs(servers) do
   end
 
   if server == "gopls" then
-    vim.cmd [[ autocmd BufWritePre *.go lua vim.lsp.buf.format{ async = true }
- ]]
     lspconfig.gopls.setup {
       settings = {
         gopls = {
@@ -62,23 +58,13 @@ for _, server in pairs(servers) do
       }
     }
   end
-
-  if server == "ccls" then
-    vim.cmd [[ autocmd BufWritePre *.c lua vim.lsp.buf.format{ async = true }
- ]]
-  end
-  if server == "kotlin_language_server" then
-    vim.cmd [[ autocmd BufWritePre *.kt lua vim.lsp.buf.format{ async = true }
- ]]
-  end
   if server == "rust_analyzer" then
     require("rust-tools").setup {
       tools = {
         on_initialized = function()
           vim.cmd [[
             autocmd BufEnter,CursorHold,InsertLeave,BufWritePost *.rs silent! lua vim.lsp.codelens.refresh()
-            autocmd BufWritePre *.rs lua vim.lsp.buf.format{ async = true }
-          ]]
+           ]]
         end,
       },
       server = {
