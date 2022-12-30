@@ -15,9 +15,6 @@ end
 
 dap_install.setup({})
 
-dap_install.config("rust", {})
-
-
 dapui.setup({
 	icons = { expanded = "", collapsed = "", current_frame = "" },
 	mappings = {
