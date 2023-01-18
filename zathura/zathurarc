@@ -1,0 +1,5 @@
+include catppuccin-mocha
+
+# Startup options
+set adjust-open width
+set recolor true
