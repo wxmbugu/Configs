@@ -84,7 +84,7 @@ return packer.startup(function(use)
 	-- Telescope
 	use({ "nvim-telescope/telescope.nvim" })
 	-- which-key
-	use({ "folke/which-key.nvim" })
+	-- use({ "folke/which-key.nvim" })
 	-- Treesitter
 	use({
 		"nvim-treesitter/nvim-treesitter",

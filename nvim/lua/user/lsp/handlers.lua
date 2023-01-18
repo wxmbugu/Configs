@@ -79,7 +79,9 @@ M.on_attach = function(client, bufnr)
 	if client.name == "sumneko_lua" then
 		client.server_capabilities.document_formatting = false
 	end
-
+	if client.name == "cssls" then
+		vim.cmd([[ autocmd BufWritePre *.css lua vim.lsp.buf.format{async = true} ]])
+	end
 	if client.supports_method("textDocument/formatting") then
 		vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
 		vim.api.nvim_create_autocmd("BufWritePre", {

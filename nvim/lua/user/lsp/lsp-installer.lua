@@ -21,7 +21,7 @@ lsp_installer.setup({
 	},
 })
 require("mason-lspconfig").setup({
-	-- automatic_installation = true,
+	automatic_installation = true,
 	ensure_installed = servers,
 })
 local lspconfig_status_ok, lspconfig = pcall(require, "lspconfig")
@@ -73,8 +73,5 @@ require("mason-lspconfig").setup_handlers({
 	end,
 	["vuels"] = function()
 		vim.cmd([[ autocmd BufWritePre *.vue lua vim.lsp.buf.format{async = true} ]])
-	end,
-	["cssls"] = function()
-		vim.cmd([[ autocmd BufWritePre *.css lua vim.lsp.buf.format{async = true} ]])
 	end,
 })
