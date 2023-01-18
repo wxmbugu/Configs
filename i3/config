@@ -223,7 +223,7 @@ bindsym $mod+r mode "resize"
 # }
 
 # Display Wallpaper
-exec_always feh --bg-fill /home/wxmbugu/Pictures/arch3.png
+exec_always feh --bg-fill /home/wxmbugu/Pictures/solarsystem.png
 
  #keybinding for i3lock
 bindsym $mod+x exec betterlockscreen --lock blur
@@ -236,8 +236,8 @@ for_window [class="Spotify"] move to workspace $ws3
 exec_always picom -f
 
 # window colors
-set $bgcolor    #00897b33
-set $ibgcolor   #363636
+set $bgcolor    #68BBE3
+set $ibgcolor   #ADD8E680 
 set $fws        #00897b80
 set $barcolor   #00897b0D
 set $textcolor  #ffffff
@@ -262,12 +262,11 @@ exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 
 # You can also use any non-zero value if you'd like to have a border
-for_window [class=".*"] border pixel 0
-
+for_window [class=".*"] border pixel 3
+# for_window [class="firefox"] border none
 # Set inner/outer gaps
-gaps inner 20
-gaps outer 20
-
+gaps inner 10
+gaps outer 5
 # Only enable gaps on a workspace when there is at least one container
 smart_gaps on
 
@@ -280,7 +279,6 @@ smart_gaps inverse_outer
 smart_borders on
 # rounded borders install i3 rounded git
 border_radius 6
-
 
 # Activate smart borders (only when there are effectively no gaps)
 # smart_borders no_gaps
