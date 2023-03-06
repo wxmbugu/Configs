@@ -7,7 +7,7 @@ local codelldb_path = extension_path .. "adapter/codelldb"
 local liblldb_path = extension_path .. "lldb/lib/liblldb.so"
 
 local servers = {
-	"sumneko_lua",
+	"lua_ls",
 	"pyright",
 }
 
