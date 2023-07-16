@@ -11,6 +11,7 @@ end
 local tree_cb = nvim_tree_config.nvim_tree_callback
 
 nvim_tree.setup({
+	on_attach = on_attach,
 	update_focused_file = {
 		enable = true,
 		update_cwd = true,
@@ -58,12 +59,12 @@ nvim_tree.setup({
 		width = 30,
 		-- height = 30,
 		side = "left",
-		mappings = {
-			list = {
-				{ key = { "l", "<CR>", "o" }, cb = tree_cb("edit") },
-				{ key = "h", cb = tree_cb("close_node") },
-				{ key = "v", cb = tree_cb("vsplit") },
-			},
-		},
+		-- mappings = {
+		-- 	list = {
+		-- 		{ key = { "l", "<CR>", "o" }, cb = tree_cb("edit") },
+		-- 		{ key = "h", cb = tree_cb("close_node") },
+		-- 		{ key = "v", cb = tree_cb("vsplit") },
+		-- 	},
+		-- },
 	},
 })
