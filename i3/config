@@ -58,11 +58,6 @@ bindsym XF86AudioPause exec playerctl pause
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 
-
-
-
-
-
 # start a terminal
 bindsym $mod+Return exec alacritty
 
@@ -131,7 +126,7 @@ bindsym $mod+a focus parent
 # We use variables to avoid repeating the names in multiple places.
 set $ws1 "1: "
 set $ws2 "2: "
-set $ws3 "3: "
+set $ws3 "3: "
 set $ws4 "4: "
 set $ws5 "5: "
 set $ws6 "6: "
@@ -223,7 +218,11 @@ bindsym $mod+r mode "resize"
 # }
 
 # Display Wallpaper
-exec_always feh --bg-fill /home/wxmbugu/Pictures/solarsystem.png
+exec_always feh --bg-fill /home/wxmbugu/Pictures/pikachu.png
+
+#siji font
+exec_always xset +fp /home/wxmbugu/.local/share/fonts
+exec_always xset fp rehash
 
  #keybinding for i3lock
 bindsym $mod+x exec betterlockscreen --lock blur
@@ -259,8 +258,10 @@ bindsym $mod+p exec --no-startup-id ~/.config/rofi/bin/menu_powermenu
 # bindsym $mod+n exec --no-startup-id ~/.config/rofi/bin/menu_network
  #Polybar
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
-
-
+# scratchpads
+for_window [class="editor"] floating enable, move scratchpad
+bindsym $mod+u [class="editor"] scratchpad show
+exec --no-startup-id alacritty --class editor -e nvim
 # You can also use any non-zero value if you'd like to have a border
 for_window [class=".*"] border pixel 3
 # for_window [class="firefox"] border none
@@ -278,7 +279,7 @@ smart_gaps inverse_outer
 # Activate smart borders (always)
 smart_borders on
 # rounded borders install i3 rounded git
-border_radius 6
+# border_radius 6
 
 # Activate smart borders (only when there are effectively no gaps)
 # smart_borders no_gaps
