@@ -54,7 +54,7 @@ return packer.startup(function(use)
 	use({ "akinsho/toggleterm.nvim" })
 	use({ "ahmedkhalf/project.nvim" })
 	use({ "lewis6991/impatient.nvim" })
-	use({ "lukas-reineke/indent-blankline.nvim" })
+	use({ "lukas-reineke/indent-blankline.nvim", commit = "9637670896b68805430e2f72cf5d16be5b97a22a" })
 	use({ "goolord/alpha-nvim" })
 
 	-- Colorschemes

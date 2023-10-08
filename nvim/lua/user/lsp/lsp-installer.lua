@@ -74,4 +74,7 @@ require("mason-lspconfig").setup_handlers({
 	["vuels"] = function()
 		vim.cmd([[ autocmd BufWritePre *.vue lua vim.lsp.buf.format{async = true} ]])
 	end,
+	["pyright"] = function()
+		vim.cmd([[ autocmd BufWritePre *.py lua vim.lsp.buf.format{async = true} ]])
+	end,
 })
