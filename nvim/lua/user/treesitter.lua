@@ -14,7 +14,4 @@ configs.setup({
 		enable = true,
 	},
 	indent = { enable = true, disable = { "python", "css" } },
-	context_commentstring = {
-		enable = true,
-	},
 })

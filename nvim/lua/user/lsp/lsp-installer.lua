@@ -77,4 +77,7 @@ require("mason-lspconfig").setup_handlers({
 	["pyright"] = function()
 		vim.cmd([[ autocmd BufWritePre *.py lua vim.lsp.buf.format{async = true} ]])
 	end,
+	["emmet_ls"] = function()
+		vim.cmd([[ autocmd BufWritePre *.html lua vim.lsp.buf.format{async = true} ]])
+	end,
 })
